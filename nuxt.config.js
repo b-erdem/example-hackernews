@@ -1,4 +1,5 @@
 module.exports = {
+  loading: false,
   head: {
     title: "nuxt-hackernews",
     meta: [
