@@ -1,7 +1,8 @@
+let api
 if (process.BROWSER) {
- const api = require('./create-api-client')
+  api = require('./create-api-client')
 } else {
- const api = require('./create-api-server')
+  api = require('./create-api-server')
 }
 
 // warm the front page cache every 15 min
