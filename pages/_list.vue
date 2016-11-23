@@ -5,7 +5,7 @@
 <script>
 import ItemList from '../components/ItemList.vue'
 
-let custom
+let customComponent
 
 function createListView (type) {
   return {
@@ -22,11 +22,11 @@ function createListView (type) {
 
 export default {
   data ({ route }) {
-    custom = createListView(route.meta.type)
+    customComponent = createListView(route.meta.type)
     return {}
   },
   component: {
-    custom
+    custom: customComponent
   }
 }
 </script>
