@@ -18,22 +18,21 @@
 
 <script>
 import Spinner from '../components/Spinner.vue'
-function fetchUser (store) {
-  return store.dispatch('FETCH_USER', {
-    id: store.state.route.params.id
-  })
-}
+
 export default {
-  name: 'user-view',
-  components: { Spinner },
+  data ({ store }) {
+    store.dispatch('FETCH_USER', {
+      id: store.state.route.params.id
+    })
+    return { }
+  },
   computed: {
     user () {
       return this.$store.state.users[this.$route.params.id]
     }
   },
-  preFetch: fetchUser,
-  beforeMount () {
-    fetchUser(this.$store)
+  components: { 
+    Spinner
   }
 }
 </script>
