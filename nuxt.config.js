@@ -21,8 +21,8 @@ module.exports = {
       // { path: '/show/:page(\\d+)?', component: createListView('show') },
       // { path: '/ask/:page(\\d+)?', component: createListView('ask') },
       // { path: '/job/:page(\\d+)?', component: createListView('job') },
-      // { path: '/item/:id(\\d+)', component: 'pages/_item' },
-      // { path: '/user/:id', component: 'pages/_user' },
+      { path: '/item/:id(\\d+)', component: 'pages/_item' },
+      { path: '/user/:id', component: 'pages/_user' }
       // { path: '/', redirect: '/top' }
     ]
   }
