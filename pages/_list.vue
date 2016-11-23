@@ -26,7 +26,7 @@ export default {
     return {}
   },
   component: {
-    custom: createListView(this.route.meta.type)
+    custom
   }
 }
 </script>
