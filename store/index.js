@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { fetchItems, fetchIdsByType, fetchUser } from './api'
+import * as filters from '../filters'
+
+// register global utility filters.
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 
 Vue.use(Vuex)
 

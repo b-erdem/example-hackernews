@@ -1,56 +1,59 @@
 <template>
-  <div class="user-view" v-show="user">
-    <ul>
-      <li><span class="label">user:</span> {{user.id}}</li>
-      <li><span class="label">created:</span> {{user.created | fromNow}} ago</li>
-      <li><span class="label">karma:</span> {{user.karma}}</li>
-      <li>
-        <span class="label">about:</span>
-        <div class="about">
-          {{{user.about}}}
-        </div>
-      </li>
-    </ul>
-    <p class="links">
-      <a :href="'https://news.ycombinator.com/submitted?id=' + user.id">submissions</a><br>
-      <a :href="'https://news.ycombinator.com/threads?id=' + user.id">comments</a>
-    </p>
+  <div class="user-view">
+    <spinner :show="!user"></spinner>
+    <template v-if="user">
+      <h1>User : {{ user.id }}</h1>
+      <ul class="meta">
+        <li><span class="label">Created:</span> {{ user.created | timeAgo }} ago</li>
+        <li><span class="label">Karma:</span> {{user.karma}}</li>
+        <li v-if="user.about" v-html="user.about" class="about"></li>
+      </ul>
+      <p class="links">
+        <a :href="'https://news.ycombinator.com/submitted?id=' + user.id">submissions</a> |
+        <a :href="'https://news.ycombinator.com/threads?id=' + user.id">comments</a>
+      </p>
+    </template>
   </div>
 </template>
 
 <script>
-import store from '../store'
+import Spinner from '../components/Spinner.vue'
+function fetchUser (store) {
+  return store.dispatch('FETCH_USER', {
+    id: store.state.route.params.id
+  })
+}
 export default {
-  name: 'UserView',
-  data () {
-    return {
-      user: {}
+  name: 'user-view',
+  components: { Spinner },
+  computed: {
+    user () {
+      return this.$store.state.users[this.$route.params.id]
     }
   },
-  route: {
-    data ({ to }) {
-      // Promise sugar syntax: return an object that contains Promise fields.
-      // http://router.vuejs.org/en/pipeline/data.html#promise-sugar
-      document.title = 'Profile: ' + to.params.id + ' | Vue.js HN Clone'
-      return {
-        user: store.fetchUser(to.params.id)
-      }
-    }
+  preFetch: fetchUser,
+  beforeMount () {
+    fetchUser(this.$store)
   }
 }
 </script>
 
 <style lang="stylus">
-@import "../variables.styl"
 .user-view
-  color $gray
-  li
-    margin 5px 0
+  background-color #fff
+  box-sizing border-box
+  padding 2em 3em
+  h1
+    margin 0
+    font-size 1.5em
+  .meta
+    list-style-type none
+    padding 0
   .label
     display inline-block
-    min-width 60px
+    min-width 4em
   .about
-    margin-top 1em
+    margin 1em 0
   .links a
     text-decoration underline
 </style>
