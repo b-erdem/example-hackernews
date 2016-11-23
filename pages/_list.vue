@@ -1,32 +1,22 @@
 <template>
-  <custom></custom>
+  <item-list :type="$route.params.category"></item-list>
 </template>
 
 <script>
 import ItemList from '../components/ItemList.vue'
 
-let customComponent
-
-function createListView (type) {
-  return {
-    name: `${type}-stories-view`,
-    // this will be called during SSR to pre-fetch data into the store!
-    preFetch (store) {
-      return store.dispatch('FETCH_LIST_DATA', { type })
-    },
-    render (h) {
-      return h(ItemList, { props: { type }})
-    }
-  }
-}
+let categories = ['top', 'new', 'show', 'ask', 'job']
 
 export default {
-  data ({ route }) {
-    customComponent = createListView(route.meta.type)
+  data ({ store, route, redirect }) {
+    if (categories.indexOf(route.params.category) < 0) {
+      redirect('/top')
+    }
+    store.dispatch('FETCH_LIST_DATA', { type: route.params.category })
     return {}
   },
   component: {
-    custom: customComponent
+    custom: ItemList
   }
 }
 </script>

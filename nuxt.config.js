@@ -16,14 +16,9 @@ module.exports = {
   ],
   router: {
     routes: [
-      { path: '/top/:page(\\d+)?', component: 'pages/_list', meta: { type: 'top' } },
-      { path: '/new/:page(\\d+)?', component: 'pages/_list', meta: { type: 'new' } },
-      { path: '/show/:page(\\d+)?', component: 'pages/_list', meta: { type: 'show' } },
-      { path: '/ask/:page(\\d+)?', component: 'pages/_list', meta: { type: 'ask' } },
-      { path: '/job/:page(\\d+)?', component: 'pages/_list', meta: { type: 'job' } },
       { path: '/item/:id(\\d+)', component: 'pages/_item' },
       { path: '/user/:id', component: 'pages/_user' },
-      { path: '/', component: 'pages/index' }
+      { path: '/:category/:page(\\d+)?', component: 'pages/_list' }
     ]
   }
 }
