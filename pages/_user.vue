@@ -20,18 +20,17 @@
 import Spinner from '../components/Spinner.vue'
 
 export default {
-  data ({ store }) {
-    store.dispatch('FETCH_USER', {
+  fetch ({ store }) {
+    return store.dispatch('FETCH_USER', {
       id: store.state.route.params.id
     })
-    return { }
   },
   computed: {
     user () {
       return this.$store.state.users[this.$route.params.id]
     }
   },
-  components: { 
+  components: {
     Spinner
   }
 }
