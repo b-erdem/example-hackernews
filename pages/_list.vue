@@ -1,9 +1,13 @@
+<template>
+  <custom></custom>
+</template>
+
+<script>
 import ItemList from '../components/ItemList.vue'
 
-// This is a factory function for dynamically creating root-level list views,
-// since they share most of the logic except for the type of items to display.
-// They are essentially higher order components wrapping ItemList.vue.
-export function createListView (type) {
+let custom
+
+function createListView (type) {
   return {
     name: `${type}-stories-view`,
     // this will be called during SSR to pre-fetch data into the store!
@@ -15,3 +19,14 @@ export function createListView (type) {
     }
   }
 }
+
+export default {
+  data ({ route }) {
+    custom = createListView(route.meta.type)
+    return {}
+  },
+  component: {
+    custom: createListView(this.route.meta.type)
+  }
+}
+</script>
