@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import { timeAgo } from '../filters'
+import { timeAgo } from '~plugins/filters'
+
 export default {
   name: 'news-item',
   props: ['item'],

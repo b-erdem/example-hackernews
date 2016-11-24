@@ -7,7 +7,7 @@ module.exports = {
       { path: '/:category/:page(\\d+)?', component: 'pages/_list' }
     ]
   },
-  plugins: ['plugins/vuex-router-sync'],
+  plugins: ['plugins/vuex-router-sync', 'plugins/filters'],
   build: {
     vendor: ['vuex-router-sync', 'firebase/app', 'firebase/database']
   }

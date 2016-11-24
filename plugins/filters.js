@@ -1,9 +1,12 @@
+import Vue from 'vue'
+
 export function host (url) {
   const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '')
   const parts = host.split('.').slice(-3)
   if (parts[0] === 'www') parts.shift()
   return parts.join('.')
 }
+Vue.filter('host', host)
 
 export function timeAgo (time) {
   const between = Date.now() / 1000 - Number(time)
@@ -15,6 +18,7 @@ export function timeAgo (time) {
     return pluralize(~~(between / 86400), ' day')
   }
 }
+Vue.filter('timeAgo', timeAgo)
 
 function pluralize (time, label) {
   if (time === 1) {
