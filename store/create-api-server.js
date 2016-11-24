@@ -28,4 +28,4 @@ if (process.__API__) {
   })
 }
 
-export default api
+module.exports = api

@@ -11,8 +11,8 @@ import Navbar from '~components/Header.vue'
 
 export default {
   beforeCreate () {
+    // Synchronise route changes with the store
     sync(this.$store, this.$router)
-    this.$store.commit('router/ROUTE_CHANGED', this.$route)
   },
   components: {
     Navbar

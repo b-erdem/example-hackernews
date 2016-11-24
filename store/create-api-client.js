@@ -9,4 +9,4 @@ const version = '/v0'
 Firebase.initializeApp(config)
 const api = Firebase.database().ref(version)
 
-export default api
+module.exports = api

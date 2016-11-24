@@ -1,5 +1,5 @@
 let api
-if (process.BROWSER) {
+if (process.BROWSER_BUILD) {
   api = require('./create-api-client')
 } else {
   api = require('./create-api-server')
