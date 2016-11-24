@@ -22,7 +22,8 @@
 <script>
 import Spinner from './Spinner.vue'
 import Item from './Item.vue'
-import { watchList } from '../store/api'
+import { watchList } from '~store/api'
+
 export default {
   name: 'item-list',
   components: {

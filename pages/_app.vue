@@ -6,16 +6,24 @@
 </template>
 
 <script>
-import { sync } from 'vuex-router-sync'
 import Navbar from '~components/Header.vue'
 
 export default {
-  beforeCreate () {
-    // Synchronise route changes with the store
-    sync(this.$store, this.$router)
-  },
   components: {
     Navbar
+  },
+  head: {
+    title: 'Nuxt.js HN Clone',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', content: "Nuxt.js project" }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
+    ]
   }
 }
 </script>
+
+<style src="~assets/main.styl" lang="styl"></style>

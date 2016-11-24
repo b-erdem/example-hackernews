@@ -3,17 +3,22 @@
 </template>
 
 <script>
-import ItemList from '../components/ItemList.vue'
+import ItemList from '~components/ItemList.vue'
 
 let categories = ['top', 'new', 'show', 'ask', 'job']
 
 export default {
+<<<<<<< HEAD
   data ({ store, route, error }) {
     if (categories.indexOf(route.params.category) < 0) {
       error({ statusCode: 404, messgae: 'Page not found' })
+=======
+  fetch ({ store, route, error }) {
+    if (categories.indexOf(route.params.category) === -1) {
+      return error({ statusCode: 404, message: 'Page not found' })
+>>>>>>> origin/master
     }
-    store.dispatch('FETCH_LIST_DATA', { type: route.params.category })
-    return {}
+    return store.dispatch('FETCH_LIST_DATA', { type: route.params.category })
   },
   component: {
     custom: ItemList
