@@ -8,9 +8,9 @@ import ItemList from '../components/ItemList.vue'
 let categories = ['top', 'new', 'show', 'ask', 'job']
 
 export default {
-  data ({ store, route, redirect }) {
+  data ({ store, route, error }) {
     if (categories.indexOf(route.params.category) < 0) {
-      redirect('/top')
+      error({ statusCode: 404, messgae: 'Page not found' })
     }
     store.dispatch('FETCH_LIST_DATA', { type: route.params.category })
     return {}
