@@ -20,5 +20,8 @@ module.exports = {
       { path: '/user/:id', component: 'pages/_user' },
       { path: '/:category/:page(\\d+)?', component: 'pages/_list' }
     ]
+  },
+  build: {
+    vendor: ['vuex-router-sync', 'firebase/app', 'firebase/database']
   }
 }
