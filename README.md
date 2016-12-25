@@ -1,6 +1,13 @@
 # nuxt-hackernews
 
-> Nuxt.js project
+HackerNews clone built with [Nuxt.js](https://github.com/nuxt/nuxt.js) (inspired by [vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0))
+
+## Features
+
+- Server Side Rendering
+- Code Splitting
+- Single-file Vue Components
+- Real-time List Updates with FLIP Animation
 
 ## Build Setup
 
@@ -14,9 +21,6 @@ $ npm run dev
 # build for production and launch server
 $ npm run build
 $ npm start
-
-# generate static project
-$ npm run generate
 ```
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+For detailed explanation on how things work, checkout the [Nuxt.js docs](https://nuxtjs.org).
