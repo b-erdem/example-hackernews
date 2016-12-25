@@ -1,3 +1,5 @@
+## 🚧 Not ready yet!
+
 # nuxt-hackernews
 
 HackerNews clone built with [Nuxt.js](https://github.com/nuxt/nuxt.js) (inspired by [vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0))
